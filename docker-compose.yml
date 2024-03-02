@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  cdr_api:
+    container_name: cdr_api
+    image: ${DOCKER_REGISTRY-}cdrapi
+    build:
+      context: .
+      dockerfile: CDR_API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ASPNETCORE_URLS: http://+:80
+    depends_on:
+      sqlserver:
+        condition: "service_started"
+    ports:
+      - "8080:80"
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    hostname: sqlserver
+    volumes:
+      - mssql_data:/var/opt/mssql
+    environment:
+      SA_PASSWORD: "Ig9379992"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
+
+volumes:
+  mssql_data: {}  
