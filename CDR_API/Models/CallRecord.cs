@@ -26,7 +26,7 @@
         /// Gets or sets the time when the call ended.
         /// This, combined with the <see cref="CallDate"/>, indicates the call duration.
         /// </summary>
-        public DateTime EndTime { get; set; } // Assuming DateTime captures both date and time for simplicity
+        public TimeSpan EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the duration of the call in seconds.

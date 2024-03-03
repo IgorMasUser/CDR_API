@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "FnZYnXAW778MiRqaE8DmeSRgg3MKJJfCEyEhynPlrtt2N03SIfRv7fs9/gys5hxy6VCUPMQUKCZ5Chsec/9hrA==",
+  "dgSpecHash": "JTlzANnsB5AtAEm+vdVTru8y1wygTu49yw03JEh/M1/zz9naf73iQqFSm77PmmQQ+urk+Ge82wq2l4DF1F0xiw==",
   "success": true,
   "projectFilePath": "E:\\TestTasks\\GIACOM\\CDR_API\\CDR_API\\CDR_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\csvhelper\\31.0.2\\csvhelper.31.0.2.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.16\\microsoft.aspnetcore.openapi.7.0.16.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
