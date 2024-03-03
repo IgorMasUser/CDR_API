@@ -8,9 +8,10 @@
     ".NETCoreApp,Version=v7.0": {
       "CDR_API/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.OpenApi": "7.0.13",
+          "Microsoft.AspNetCore.OpenApi": "7.0.16",
           "Microsoft.EntityFrameworkCore.Design": "7.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.16",
+          "Microsoft.EntityFrameworkCore.Tools": "7.0.16",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.4",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
@@ -60,14 +61,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.OpenApi/7.0.13": {
+      "Microsoft.AspNetCore.OpenApi/7.0.16": {
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
         },
         "runtime": {
           "lib/net7.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "assemblyVersion": "7.0.13.0",
-            "fileVersion": "7.0.1323.52007"
+            "assemblyVersion": "7.0.16.0",
+            "fileVersion": "7.0.1624.6815"
           }
         }
       },
@@ -201,6 +202,11 @@
             "assemblyVersion": "7.0.16.0",
             "fileVersion": "7.0.1624.6616"
           }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/7.0.16": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "7.0.16"
         }
       },
       "Microsoft.Extensions.ApiDescription.Server/6.0.5": {},
@@ -645,12 +651,12 @@
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.OpenApi/7.0.13": {
+    "Microsoft.AspNetCore.OpenApi/7.0.16": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-CHNUWJD3mbfn1Lra1b0EeoyRHDv7udHqVvle/BLZgXSfjRcau8YSWRqmP6W9zLeZ/rxSN64kqrgOOvfkHJzgYg==",
-      "path": "microsoft.aspnetcore.openapi/7.0.13",
-      "hashPath": "microsoft.aspnetcore.openapi.7.0.13.nupkg.sha512"
+      "sha512": "sha512-ZSfbgUFnCBUnx4V/lOgpJvIFpMfGFHJHCJVV8SSP/UtyvMS8hYRCri4/lx2MATmlcGfx4KQR5+Y5oOmHrUBKxw==",
+      "path": "microsoft.aspnetcore.openapi/7.0.16",
+      "hashPath": "microsoft.aspnetcore.openapi.7.0.16.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",
@@ -721,6 +727,13 @@
       "sha512": "sha512-90vBWjQ69ukpxCq+MBputcMY9A/3bRQ5WnFGSCuiT/EKTyYa+PQJ+wvtsYtyE/PWz8NMGdFly5823CJ0hjRqyA==",
       "path": "microsoft.entityframeworkcore.sqlserver/7.0.16",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.7.0.16.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/7.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZqBGxy8X1877dnGMVwmLzuMhZz8IstuX5QfUoKiQGIGRYV4r2YvxZX3oLw9BvyMZBgtm95dcW6Bev0gerKRNfA==",
+      "path": "microsoft.entityframeworkcore.tools/7.0.16",
+      "hashPath": "microsoft.entityframeworkcore.tools.7.0.16.nupkg.sha512"
     },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "type": "package",
