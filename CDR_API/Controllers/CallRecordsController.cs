@@ -1,6 +1,7 @@
 ﻿using CDR_API.Models;
 using CDR_API.Services.Abstraction;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CDR_API.Controllers
 {
@@ -54,6 +55,26 @@ namespace CDR_API.Controllers
             {
                 var amount = await recordsStoreService.GetTotalCalls(startDate, endDate);
                 return Ok(amount);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets the average duration of calls within a given time frame in seconds.
+        /// </summary>
+        /// <param name="startDate">The start date of the period to retrieve call data for. Expected format: YYYY-MM-DD.</param>
+        /// <param name="endDate">The end date of the period to retrieve call data for. Expected format: YYYY-MM-DD.</param>
+        /// <returns>The total number of calls made between the start and end dates.</returns>
+        [HttpGet("average-duration")]
+        public async Task<ActionResult<double>> GetAverageCallDuration(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var averageDuration = await recordsStoreService.GetAverageCallDuration(startDate, endDate);
+                return Ok(averageDuration);
             }
             catch (Exception)
             {

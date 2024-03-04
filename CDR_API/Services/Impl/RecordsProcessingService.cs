@@ -14,6 +14,22 @@ namespace CDR_API.Services.Impl
             this.cdrContext = cdrContext ?? throw new ArgumentNullException(nameof(cdrContext));
         }
 
+        public async Task<double> GetAverageCallDuration(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var averageDuration = await cdrContext.CallRecords
+                         .Where(c => c.CallDate >= startDate && c.CallDate <= endDate)
+                         .AverageAsync(c => c.Duration);
+
+                return averageDuration;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while getting average call records duration from the database.", ex);
+            }
+        }
+
         public async Task<int> GetTotalCalls(DateTime startDate, DateTime endDate)
         {
             try
