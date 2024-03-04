@@ -7,12 +7,15 @@
     {
         /// <summary>
         /// Gets or sets the unique identifier for the caller.
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// This is typically the caller's phone number.
         /// </summary>
         public string CallerId { get; set; }
 
         /// <summary>
-        /// Gets or sets the unique identifier for the recipient of the call.
         /// This is typically the recipient's phone number.
         /// </summary>
         public string Recipient { get; set; }

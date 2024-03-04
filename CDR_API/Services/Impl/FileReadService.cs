@@ -9,6 +9,14 @@ namespace CDR_API.Services.Impl
 {
     public class FileReadService : IFileReadService
     {
+        private readonly IRecordsStoreService _recordsStoreService;
+        private const int BatchSize = 1000;
+
+        public FileReadService(IRecordsStoreService recordsStoreService)
+        {
+            _recordsStoreService = recordsStoreService;
+        }
+
         public async Task ToReadFile(UploadFileModel file)
         {
             try
@@ -25,10 +33,21 @@ namespace CDR_API.Services.Impl
 
                 var records = csv.GetRecords<CallRecord>();
 
+                var batch = new List<CallRecord>(BatchSize);
                 foreach (var record in records)
                 {
-                    Console.WriteLine($"{record.CallerId} + {record.Recipient}+ {record.CallDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)}" +
-                        $"+ {record.EndTime}+ {record.Duration}+ {record.Cost}+ {record.Reference}+ {record.Currency}");
+                    batch.Add(record);
+                    if (batch.Count >= BatchSize)
+                    {
+                        await _recordsStoreService.ToStoreRecords(batch);
+                        batch.Clear(); // Prepare for next batch
+                    }
+                }
+
+                // Ensure any remaining records are stored
+                if (batch.Any())
+                {
+                    await _recordsStoreService.ToStoreRecords(batch);
                 }
             }
             catch (Exception)

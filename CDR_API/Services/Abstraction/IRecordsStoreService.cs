@@ -4,6 +4,6 @@ namespace CDR_API.Services.Abstraction
 {
     public interface IRecordsStoreService
     {
-        Task<CallRecord> ToStoreRecords(CallRecord callRecord);
+        Task ToStoreRecords(IEnumerable<CallRecord> callRecords);
     }
 }

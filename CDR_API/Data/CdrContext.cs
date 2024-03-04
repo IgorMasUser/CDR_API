@@ -15,7 +15,10 @@ namespace CDR_API.Data
             {
                 entity.ToTable("CallRecords");
 
-                entity.HasKey(e => e.CallerId);
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id)
+                     .IsRequired();
 
                 entity.Property(e => e.CallerId)
                     .IsRequired()
