@@ -9,10 +9,12 @@ namespace CDR_API.Controllers
     public class CallRecordsController : ControllerBase
     {
         private readonly IFileReadService fileReadService;
+        private readonly IRecordsProcessingService recordsStoreService;
 
-        public CallRecordsController(IFileReadService fileReadService)
+        public CallRecordsController(IFileReadService fileReadService, IRecordsProcessingService recordsStoreService)
         {
             this.fileReadService = fileReadService;
+            this.recordsStoreService = recordsStoreService;
         }
 
         /// <summary>
@@ -30,13 +32,34 @@ namespace CDR_API.Controllers
 
             try
             {
-               await fileReadService.ToReadFile(file);
-               return Ok();
+                await fileReadService.ToReadFile(file);
+                return Ok();
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
+        /// <summary>
+        /// Gets the total number of calls within a given time frame.
+        /// </summary>
+        /// <param name="startDate">The start date of the period to retrieve call data for. Expected format: YYYY-MM-DD.</param>
+        /// <param name="endDate">The end date of the period to retrieve call data for. Expected format: YYYY-MM-DD.</param>
+        /// <returns>The total number of calls made between the start and end dates.</returns>
+        [HttpGet("total-calls")]
+        public async Task<ActionResult<int>> GetTotalCalls(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var amount = await recordsStoreService.GetTotalCalls(startDate, endDate);
+                return Ok(amount);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

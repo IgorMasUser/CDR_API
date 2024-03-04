@@ -2,8 +2,9 @@
 
 namespace CDR_API.Services.Abstraction
 {
-    public interface IRecordsStoreService
+    public interface IRecordsProcessingService
     {
         Task ToStoreRecords(IEnumerable<CallRecord> callRecords);
+        Task<int> GetTotalCalls(DateTime startDate, DateTime endDate);
     }
 }

@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddTransient<IFileReadService, FileReadService>();
-builder.Services.AddTransient<IRecordsStoreService, RecordsStoreService>();
+builder.Services.AddTransient<IRecordsProcessingService, RecordsProcessingService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

@@ -9,12 +9,12 @@ namespace CDR_API.Services.Impl
 {
     public class FileReadService : IFileReadService
     {
-        private readonly IRecordsStoreService _recordsStoreService;
+        private readonly IRecordsProcessingService recordsStoreService;
         private const int BatchSize = 1000;
 
-        public FileReadService(IRecordsStoreService recordsStoreService)
+        public FileReadService(IRecordsProcessingService recordsStoreService)
         {
-            _recordsStoreService = recordsStoreService;
+            this.recordsStoreService = recordsStoreService;
         }
 
         public async Task ToReadFile(UploadFileModel file)
@@ -32,14 +32,14 @@ namespace CDR_API.Services.Impl
                 csv.Context.RegisterClassMap<CallRecordMap>();
 
                 var records = csv.GetRecords<CallRecord>();
-
                 var batch = new List<CallRecord>(BatchSize);
+
                 foreach (var record in records)
                 {
                     batch.Add(record);
                     if (batch.Count >= BatchSize)
                     {
-                        await _recordsStoreService.ToStoreRecords(batch);
+                        await recordsStoreService.ToStoreRecords(batch);
                         batch.Clear(); // Prepare for next batch
                     }
                 }
@@ -47,7 +47,7 @@ namespace CDR_API.Services.Impl
                 // Ensure any remaining records are stored
                 if (batch.Any())
                 {
-                    await _recordsStoreService.ToStoreRecords(batch);
+                    await recordsStoreService.ToStoreRecords(batch);
                 }
             }
             catch (Exception)
