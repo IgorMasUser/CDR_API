@@ -51,6 +51,22 @@ namespace CDR_API.Services.Impl
             }
         }
 
+        public async Task<decimal> GetCostAnalysis(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var totalCost = await cdrContext.CallRecords
+                         .Where(c => c.CallDate >= startDate && c.CallDate <= endDate)
+                         .SumAsync(c => c.Cost);
+
+                return totalCost;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while getting top call numbers from the database.", ex);
+            }
+        }
+
         public async Task<IEnumerable<string>> GetTopCalledNumbers()
         {
             try

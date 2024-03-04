@@ -119,5 +119,24 @@ namespace CDR_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Calculates the total cost of calls within a specified period.
+        /// </summary>
+        /// <param name="startDate">The start date of the period for which to calculate the total cost.</param>
+        /// <param name="endDate">The end date of the period for which to calculate the total cost.</param>
+        /// <returns>The total cost of calls made within the specified date range.</returns>
+        [HttpGet("cost-analysis")]
+        public async Task<ActionResult<decimal>> GetCostAnalysis(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var totalCost = await recordsStoreService.GetCostAnalysis(startDate, endDate);
+                return Ok(totalCost);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
