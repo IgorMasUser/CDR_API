@@ -138,5 +138,25 @@ namespace CDR_API.Controllers
                 throw;
             }
         }
+
+        /// <summary>
+        /// Retrieves a list of caller IDs that have activity exceeding ot equal to a specified threshold.
+        /// This can help identify potential misuse or fraud by highlighting numbers with unusually high call frequencies.
+        /// </summary>
+        /// <param name="threshold">The minimum number of calls a caller must have made to be considered unusual.</param>
+        /// <returns>A list of caller IDs that have made more calls than the specified threshold.</returns>
+        [HttpGet("unusual-activity")]
+        public async Task<ActionResult<IEnumerable<string>>> GetUnusualActivity(int threshold)
+        {
+            try
+            {
+                var unusualNumbers = await recordsStoreService.GetUnusualActivity(threshold);
+                return Ok(unusualNumbers);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

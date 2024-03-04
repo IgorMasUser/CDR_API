@@ -63,7 +63,7 @@ namespace CDR_API.Services.Impl
             }
             catch (Exception ex)
             {
-                throw new Exception("An error occurred while getting top call numbers from the database.", ex);
+                throw new Exception("An error occurred while getting cost analysis from the database.", ex);
             }
         }
 
@@ -96,6 +96,24 @@ namespace CDR_API.Services.Impl
             catch (Exception ex)
             {
                 throw new Exception("An error occurred while getting total call records from the database.", ex);
+            }
+        }
+
+        public async Task<IEnumerable<string>> GetUnusualActivity(int threshold)
+        {
+            try
+            {
+                var unusualNumbers = await cdrContext.CallRecords
+                    .GroupBy(c => c.CallerId)
+                    .Where(g => g.Count() >= threshold)
+                    .Select(g => g.Key)
+                    .ToListAsync();
+
+                return unusualNumbers;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while unusual ascivity in the database.", ex);
             }
         }
 

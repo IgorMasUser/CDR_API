@@ -10,5 +10,6 @@ namespace CDR_API.Services.Abstraction
         Task<IEnumerable<string>> GetTopCalledNumbers();
         IEnumerable<dynamic> GetCallVolumeByTimeOfDay(DateTime date);
         Task<decimal> GetCostAnalysis(DateTime startDate, DateTime endDate);
+        Task<IEnumerable<string>> GetUnusualActivity(int threshold);
     }
 }
