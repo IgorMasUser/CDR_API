@@ -82,5 +82,22 @@ namespace CDR_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Lists the top 10 most frequently called numbers.
+        /// </summary>
+        /// <returns>A list of the top 10 most frequently called numbers.</returns>
+        [HttpGet("top-called")]
+        public async Task<ActionResult<IEnumerable<string>>> GetTopCalledNumbers()
+        {
+            try
+            {
+                var topCalledNumbers = await recordsStoreService.GetTopCalledNumbers();
+                return Ok(topCalledNumbers);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

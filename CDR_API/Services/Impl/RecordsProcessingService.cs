@@ -30,6 +30,18 @@ namespace CDR_API.Services.Impl
             }
         }
 
+        public async Task<IEnumerable<string>> GetTopCalledNumbers()
+        {
+            var topCalledNumbers = await cdrContext.CallRecords
+                        .GroupBy(c => c.Recipient)
+                        .OrderByDescending(g => g.Count())
+                        .Take(10)
+                        .Select(g => g.Key)
+                        .ToListAsync();
+
+            return topCalledNumbers;
+        }
+
         public async Task<int> GetTotalCalls(DateTime startDate, DateTime endDate)
         {
             try

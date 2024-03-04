@@ -7,5 +7,6 @@ namespace CDR_API.Services.Abstraction
         Task ToStoreRecords(IEnumerable<CallRecord> callRecords);
         Task<int> GetTotalCalls(DateTime startDate, DateTime endDate);
         Task<double> GetAverageCallDuration(DateTime startDate, DateTime endDate);
+        Task<IEnumerable<string>> GetTopCalledNumbers();
     }
 }
