@@ -1,4 +1,6 @@
 using CDR_API.Data;
+using CDR_API.Services.Abstraction;
+using CDR_API.Services.Impl;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddTransient<IFileReadService, FileReadService>();
+builder.Services.AddTransient<IRecordsStoreService, RecordsStoreService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

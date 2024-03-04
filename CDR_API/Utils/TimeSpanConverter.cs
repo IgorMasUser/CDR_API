@@ -1,10 +1,9 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
-using System;
 using System.Globalization;
 
-namespace CDR_API
+namespace CDR_API.Utils
 {
     public class TimeSpanConverter : DefaultTypeConverter
     {

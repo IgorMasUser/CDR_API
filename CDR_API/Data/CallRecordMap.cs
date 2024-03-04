@@ -1,8 +1,9 @@
 ﻿using CDR_API.Models;
+using CDR_API.Utils;
 using CsvHelper.Configuration;
 using System.Globalization;
 
-namespace CDR_API
+namespace CDR_API.Data
 {
     public class CallRecordMap : ClassMap<CallRecord>
     {
