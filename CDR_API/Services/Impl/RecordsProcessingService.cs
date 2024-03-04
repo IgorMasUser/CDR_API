@@ -1,6 +1,7 @@
 ﻿using CDR_API.Data;
 using CDR_API.Models;
 using CDR_API.Services.Abstraction;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CDR_API.Services.Impl
@@ -30,16 +31,43 @@ namespace CDR_API.Services.Impl
             }
         }
 
+        public IEnumerable<dynamic> GetCallVolumeByTimeOfDay(DateTime date)
+        {
+            try
+            {
+                var volumes = cdrContext.CallRecords
+                     .Where(c => c.CallDate.Date == date.Date)
+                     .AsEnumerable()
+                     .GroupBy(c => c.EndTime.Hours)
+                     .Select(g => new { Hour = g.Key, Volume = g.Count() })
+                     .OrderBy(g => g.Hour)
+                     .ToList();
+
+                return volumes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while getting call volumes distributed by time of day from the database.", ex);
+            }
+        }
+
         public async Task<IEnumerable<string>> GetTopCalledNumbers()
         {
-            var topCalledNumbers = await cdrContext.CallRecords
+            try
+            {
+                var topCalledNumbers = await cdrContext.CallRecords
                         .GroupBy(c => c.Recipient)
                         .OrderByDescending(g => g.Count())
                         .Take(10)
                         .Select(g => g.Key)
                         .ToListAsync();
 
-            return topCalledNumbers;
+                return topCalledNumbers;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while getting top call numbers from the database.", ex);
+            }
         }
 
         public async Task<int> GetTotalCalls(DateTime startDate, DateTime endDate)

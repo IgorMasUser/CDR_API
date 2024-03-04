@@ -8,5 +8,6 @@ namespace CDR_API.Services.Abstraction
         Task<int> GetTotalCalls(DateTime startDate, DateTime endDate);
         Task<double> GetAverageCallDuration(DateTime startDate, DateTime endDate);
         Task<IEnumerable<string>> GetTopCalledNumbers();
+        IEnumerable<dynamic> GetCallVolumeByTimeOfDay(DateTime date);
     }
 }

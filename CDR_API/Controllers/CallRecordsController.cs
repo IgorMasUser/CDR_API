@@ -99,5 +99,25 @@ namespace CDR_API.Controllers
                 throw;
             }
         }
+
+        /// <summary>
+        /// Provides an analysis of call volumes distributed by time of day for the specified date.
+        /// </summary>
+        /// <param name="date">The date for which to analyze call volume by hour.</param>
+        /// <returns>A list of objects each representing an hour of the day and the volume of calls in that hour.</returns>
+        [HttpGet("volume-by-time")]
+        public ActionResult<IEnumerable<dynamic>> GetCallVolumeByTimeOfDay(DateTime date)
+        {
+            try
+            {
+                var volumes = recordsStoreService.GetCallVolumeByTimeOfDay(date);
+                return Ok(volumes);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }
