@@ -1,7 +1,6 @@
 ﻿using CDR_API.Models;
 using CDR_API.Services.Abstraction;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace CDR_API.Controllers
 {
