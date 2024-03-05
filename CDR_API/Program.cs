@@ -1,6 +1,7 @@
 using CDR_API.Data;
 using CDR_API.Services.Abstraction;
 using CDR_API.Services.Impl;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -32,6 +33,16 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
+});
+
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 1_000_000_000_000; // 1 GB
+});
+
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Limits.MaxRequestBodySize = 1_000_000_000_000; // 1 GB
 });
 
 var app = builder.Build();
