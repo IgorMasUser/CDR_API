@@ -139,7 +139,7 @@ namespace CDR_API.Controllers
         }
 
         /// <summary>
-        /// Retrieves a list of caller IDs that have activity exceeding ot equal to a specified threshold.
+        /// Retrieves a list of caller IDs that have activity exceeding or equal to a specified threshold.
         /// This can help identify potential misuse or fraud by highlighting numbers with unusually high call frequencies.
         /// </summary>
         /// <param name="threshold">The minimum number of calls a caller must have made to be considered unusual.</param>
