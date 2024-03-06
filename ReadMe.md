@@ -1,0 +1,14 @@
+The Deliverable:
+
+1.For the foundation of this application, I selected the .NET 7 framework, prioritizing its robust features and compatibility with a wide range of development needs. The project is structured as a Web API, focusing exclusively on backend queries without necessitating a frontend interface. This choice is underpinned by the requirement for a lightweight, efficient solution to handle API requests and responses. Swagger UI was integrated to facilitate interaction with the API endpoints, offering an intuitive interface for testing and documenting the API’s capabilities.
+Database selection was paramount, given the need for efficient processing and storage of large files. After evaluating several options, SQL Database emerged as the preferred choice due to its scalability and performance. CsvHelper was chosen for CSV data processing for its proven efficiency and ease of use. Entity Framework Core serves as the ORM tool, a standard choice for its versatility, support, and ability to streamline database operations.
+
+Containerization with Docker is employed to enhance the application’s portability and simplify deployment across different environments, ensuring consistent behavior regardless of the underlying infrastructure.
+
+2.A significant assumption was the potential handling of files up to 2 GB, with provisions made to adjust this limit as necessary. This is based on the expectation of processing substantial datasets, requiring the system to be both flexible and scalable. Anticipating incomplete data rows, rigorous input validation was implemented alongside comprehensive unit testing to ensure data integrity and robust error handling.
+
+3.Given additional time, further optimization of database choices and batch processing sizes would be a priority. Initial testing, including the successful handling of a real 1 GB CSV file, indicates promising performance, yet there remains potential for refinement to achieve even greater efficiency. Exploring alternative databases or tuning the current setup could yield significant improvements in processing speed and resource utilization.
+
+Deployment has been considered, with the application’s Dockerized environment poised to simplify this process. However, identifying an appropriate free hosting platform and adapting the deployment strategy to its specific requirements would necessitate further research and testing.
+
+4.The application’s design for operation within a Docker container ideally positions it for straightforward deployment across a variety of platforms. While the final deployment step remains outstanding, this design choice ensures a solid foundation for future deployment efforts, requiring only the selection of a suitable hosting service and the execution of deployment procedures tailored to that environment.
