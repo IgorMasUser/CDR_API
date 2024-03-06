@@ -10,11 +10,12 @@ namespace CDR_API.Services.Impl
     public class FileReadService : IFileReadService
     {
         private readonly IRecordsProcessingService recordsStoreService;
-        private const int BatchSize = 1000;
+        private readonly int batchSize;
 
-        public FileReadService(IRecordsProcessingService recordsStoreService)
+        public FileReadService(IRecordsProcessingService recordsStoreService, FileReadServiceOptions options)
         {
             this.recordsStoreService = recordsStoreService;
+            this.batchSize = options.BatchSize;
         }
 
         public async Task ToReadFile(UploadFileModel file)
@@ -32,12 +33,12 @@ namespace CDR_API.Services.Impl
                 csv.Context.RegisterClassMap<CallRecordMap>();
 
                 var records = csv.GetRecords<CallRecord>();
-                var batch = new List<CallRecord>(BatchSize);
+                var batch = new List<CallRecord>(batchSize);
 
                 foreach (var record in records)
                 {
                     batch.Add(record);
-                    if (batch.Count >= BatchSize)
+                    if (batch.Count >= batchSize)
                     {
                         await recordsStoreService.ToStoreRecords(batch);
                         batch.Clear(); // Prepare for next batch

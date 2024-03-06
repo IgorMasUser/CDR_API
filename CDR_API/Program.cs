@@ -1,4 +1,5 @@
 using CDR_API.Data;
+using CDR_API.Models;
 using CDR_API.Services.Abstraction;
 using CDR_API.Services.Impl;
 using Microsoft.AspNetCore.Http.Features;
@@ -35,14 +36,20 @@ builder.Services.AddCors(options =>
     });
 });
 
+var fileUploadOptions = new FileUploadOptions();
+builder.Configuration.GetSection("FileUploadOptions").Bind(fileUploadOptions);
+
+var fileReadServiceOptions = builder.Configuration.GetSection("FileReadService").Get<FileReadServiceOptions>();
+builder.Services.AddSingleton(fileReadServiceOptions);
+
 builder.Services.Configure<FormOptions>(options =>
 {
-    options.MultipartBodyLengthLimit = 1_000_000_000_000; // 1 GB
+    options.MultipartBodyLengthLimit = fileUploadOptions.MultipartBodyLengthLimit;
 });
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
-    serverOptions.Limits.MaxRequestBodySize = 1_000_000_000_000; // 1 GB
+    serverOptions.Limits.MaxRequestBodySize = fileUploadOptions.MaxRequestBodySize;
 });
 
 var app = builder.Build();
