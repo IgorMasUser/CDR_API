@@ -5,17 +5,23 @@ using CsvHelper;
 using System.Globalization;
 using CDR_API.Data;
 using CDR_API.Configs;
+using CDR_API.Utils;
 
 namespace CDR_API.Services.Impl
 {
     public class FileReadService : IFileReadService
     {
         private readonly IRecordsProcessingService recordsStoreService;
+        private readonly ILogger<FileReadService> logger;
         private readonly int batchSize;
+        private CallRecordValidator validator = new CallRecordValidator();
 
-        public FileReadService(IRecordsProcessingService recordsStoreService, FileReadServiceOptions options)
+        public FileReadService(IRecordsProcessingService recordsStoreService,
+            FileReadServiceOptions options,
+            ILogger<FileReadService> logger)
         {
             this.recordsStoreService = recordsStoreService;
+            this.logger = logger;
             this.batchSize = options.BatchSize;
         }
 
@@ -38,6 +44,16 @@ namespace CDR_API.Services.Impl
 
                 foreach (var record in records)
                 {
+                    var validationResult = validator.Validate(record);
+                    if (!validationResult.IsValid)
+                    {
+                        foreach (var error in validationResult.Errors)
+                        {
+                            logger.LogError($"Record with values: {record.CallerId};{record.Recipient};{record.Reference};{record.CallDate} is invalid: {error.ErrorMessage}");
+                        }
+                        continue;
+                    }
+
                     batch.Add(record);
                     if (batch.Count >= batchSize)
                     {
