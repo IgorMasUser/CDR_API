@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "JTlzANnsB5AtAEm+vdVTru8y1wygTu49yw03JEh/M1/zz9naf73iQqFSm77PmmQQ+urk+Ge82wq2l4DF1F0xiw==",
+  "dgSpecHash": "Pqk7ZYPLse8VjmPq9HxHqTnYUlxv8I2lKWgatrFeLGwZq1dXkFK94oipvSyQFEL+hi0X4ZSdPOOEveigA5ILaQ==",
   "success": true,
   "projectFilePath": "E:\\TestTasks\\GIACOM\\CDR_API\\CDR_API\\CDR_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\csvhelper\\31.0.2\\csvhelper.31.0.2.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.16\\microsoft.aspnetcore.openapi.7.0.16.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

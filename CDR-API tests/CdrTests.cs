@@ -5,6 +5,8 @@ using CDR_API.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using CDR_API.Data;
 using CDR_API.Services.Impl;
+using CDR_API.Utils;
+using FluentValidation;
 
 namespace CDR_API_tests
 {
@@ -87,6 +89,22 @@ namespace CDR_API_tests
 
                 Assert.Contains(expectedTopOneCalledNumbers, result);
             }
+        }
+
+        [Fact]
+        public void Validate_CallRecordWithInvalidCost_ReturnsFailure()
+        {
+            // Arrange
+            var validator = new CallRecordValidator();
+            var testRecord = new MockCallRecords().callRecords.FirstOrDefault();
+
+            // Act
+
+            var validationResult = validator.Validate(testRecord);
+
+            // Assert
+            Assert.False(validationResult.IsValid);
+            Assert.Contains(validationResult.Errors, e => e.PropertyName == "Cost");
         }
     }
 }

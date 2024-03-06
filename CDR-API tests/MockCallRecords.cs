@@ -13,7 +13,7 @@ namespace CDR_API_tests
                     CallDate = new DateTime(2016, 8, 16),
                     EndTime = TimeSpan.Parse("14:21:33"),
                     Duration = 43,
-                    Cost = 0,
+                    Cost = -0.006M,
                     Reference = "C5DA9724701EEBBA95CA2CC5617BA93E4",
                     Currency = "GBP"
                 },

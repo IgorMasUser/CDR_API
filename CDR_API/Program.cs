@@ -2,6 +2,8 @@ using CDR_API.Configs;
 using CDR_API.Data;
 using CDR_API.Services.Abstraction;
 using CDR_API.Services.Impl;
+using CDR_API.Utils;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -46,6 +48,9 @@ builder.Services.Configure<FormOptions>(options =>
 {
     options.MultipartBodyLengthLimit = fileUploadOptions.MultipartBodyLengthLimit;
 });
+
+
+builder.Services.AddFluentValidationAutoValidation();
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
