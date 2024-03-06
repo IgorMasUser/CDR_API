@@ -10,6 +10,9 @@ E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\CDR_API.xml
 E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\Azure.Core.dll
 E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\Azure.Identity.dll
 E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\CsvHelper.dll
+E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\FluentValidation.dll
+E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
+E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
 E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\Humanizer.dll
 E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -78,6 +81,3 @@ E:\TestTasks\GIACOM\CDR_API\CDR_API\obj\Debug\net7.0\CDR_API.xml
 E:\TestTasks\GIACOM\CDR_API\CDR_API\obj\Debug\net7.0\CDR_API.pdb
 E:\TestTasks\GIACOM\CDR_API\CDR_API\obj\Debug\net7.0\CDR_API.genruntimeconfig.cache
 E:\TestTasks\GIACOM\CDR_API\CDR_API\obj\Debug\net7.0\ref\CDR_API.dll
-E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\FluentValidation.dll
-E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
-E:\TestTasks\GIACOM\CDR_API\CDR_API\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
