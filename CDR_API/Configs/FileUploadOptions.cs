@@ -1,4 +1,4 @@
-﻿namespace CDR_API.Models
+﻿namespace CDR_API.Configs
 {
     public class FileUploadOptions
     {
