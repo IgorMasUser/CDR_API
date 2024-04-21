@@ -20,7 +20,7 @@ namespace CDR_API.Services.Impl
             FileReadServiceOptions options,
             ILogger<FileReadService> logger)
         {
-            this.recordsStoreService = recordsStoreService;
+            this.recordsStoreService = recordsStoreService ?? throw new ArgumentNullException(nameof(recordsStoreService));
             this.logger = logger;
             this.batchSize = options.BatchSize;
         }
@@ -68,8 +68,9 @@ namespace CDR_API.Services.Impl
                     await recordsStoreService.ToStoreRecords(batch);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.LogError($"Error occured while reading file: {ex.Message}");
                 throw;
             }
         }

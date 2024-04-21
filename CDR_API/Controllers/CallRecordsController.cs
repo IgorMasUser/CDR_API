@@ -13,8 +13,8 @@ namespace CDR_API.Controllers
 
         public CallRecordsController(IFileReadService fileReadService, IRecordsProcessingService recordsStoreService)
         {
-            this.fileReadService = fileReadService;
-            this.recordsStoreService = recordsStoreService;
+            this.fileReadService = fileReadService ?? throw new ArgumentNullException(nameof(fileReadService));
+            this.recordsStoreService = recordsStoreService ?? throw new ArgumentNullException(nameof(recordsStoreService));
         }
 
         /// <summary>
